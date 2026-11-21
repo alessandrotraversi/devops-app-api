@@ -1,10 +1,10 @@
 # Entendendo o DevOps do `app-api`
 
-Este repositório é um **material de estudo**. Ele explica, peça por peça, as configurações de DevOps do repositório [`app-api`](https://github.com/robinho1995/app-api) — Kubernetes, Docker, pipelines e observabilidade.
+Este repositório é um **material de estudo**. Ele explica, peça por peça, as configurações de DevOps do repositório [`app-api`](https://github.com/alessandrotraversi/app-api) (meu fork) — Kubernetes, Docker, pipelines e observabilidade.
 
 Essas configurações foram geradas com ajuda de IA. Isso é ótimo para andar rápido, mas tem um risco: **arquivo que funciona não é o mesmo que arquivo que a gente entende**. A ideia aqui é fechar essa lacuna.
 
-> **Regra deste repo:** não copiamos os arquivos originais. Explicamos os **conceitos** por trás deles, com exemplos mínimos e nomes genéricos (`minha-api`, `meu-banco`...). Para ver o arquivo real, abra o `app-api` lado a lado.
+> **Regra deste repo:** não copiamos os arquivos originais. Explicamos os **conceitos** por trás deles, com exemplos mínimos e nomes genéricos (`minha-api`, `meu-banco`...). Para ver o arquivo real, abra o [`app-api`](https://github.com/alessandrotraversi/app-api) lado a lado.
 
 ---
 
@@ -59,6 +59,9 @@ O arquivo [`.claude/agents/ambiente-local-prod.md`](.claude/agents/ambiente-loca
 **Como usar:**
 
 ```bash
+# 0. Clone o fork do app-api ao lado deste repositório (se ainda não tiver)
+git clone https://github.com/alessandrotraversi/app-api.git ../app-api
+
 # 1. Copie o agente para o repositório do app-api (ou para ~/.claude/agents/ para usar em qualquer projeto)
 mkdir -p ../app-api/.claude/agents
 cp .claude/agents/ambiente-local-prod.md ../app-api/.claude/agents/

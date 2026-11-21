@@ -39,7 +39,7 @@ metadata:
   namespace: argocd
 spec:
   source:
-    repoURL: https://github.com/<voce>/<repo>
+    repoURL: https://github.com/alessandrotraversi/app-api
     path: k8s/overlays/dev
     targetRevision: main
   destination:

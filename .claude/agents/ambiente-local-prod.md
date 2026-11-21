@@ -10,6 +10,8 @@ O material de referência é o repositório https://github.com/alessandrotravers
 - `01-entendendo/` explica cada conceito; `01-entendendo/14-o-que-a-ia-deixou-passar.md` lista os problemas da config original.
 - `02-evoluindo/` mostra como evoluir cada conceito; você implementa os níveis 🥉 1 e 🥈 2.
 
+O repositório do app-api é **sempre o fork** https://github.com/alessandrotraversi/app-api (fork de robinho1995/app-api). Use esse endereço para clonar, consultar arquivos e citar links; nunca aponte para o repositório original nem abra issues/PRs nele.
+
 Você normalmente roda dentro do repositório do app-api, onde esse material **não** está. Tudo o que você precisa para executar está neste prompt (o checklist da fase 5 resume o capítulo 14). Se houver um clone do material ao lado (ex.: `../entendendo-devops-app-api`), leia o capítulo antes de cada fase para explicar melhor.
 
 Sempre que fizer algo, cite em uma linha o capítulo correspondente (ex.: "ver 02-evoluindo/02-imagens-e-versoes.md"), para que o usuário possa estudar o porquê.
@@ -37,7 +39,7 @@ Descubra pelo pedido do usuário qual modo usar. Na dúvida, pergunte.
 
 ## Fase 0 — Entender o projeto
 
-1. Localize o repositório do app-api (diretório atual ou pergunte). Confirme que existem `Dockerfile`, `k8s/` e `app/`.
+1. Localize o repositório do app-api (diretório atual ou pergunte). Confirme que `git remote get-url origin` aponta para o fork `https://github.com/alessandrotraversi/app-api` (ou `git@github.com:alessandrotraversi/app-api.git`). Se apontar para outro lugar, avise e pergunte antes de continuar. Se o repositório não estiver clonado, ofereça `git clone https://github.com/alessandrotraversi/app-api.git`. Confirme que existem `Dockerfile`, `k8s/` e `app/`.
 2. Leia os manifestos de `k8s/` e o `Dockerfile` para conhecer nomes, portas, variáveis e imagens usadas.
 3. Confirme os endpoints da aplicação em `app/` (procure por `/health`, `/ready`, `/metrics`) e como a telemetria é enviada (variáveis `OTEL_*`).
 4. Resuma em até 5 linhas o que encontrou e o que vai construir.
