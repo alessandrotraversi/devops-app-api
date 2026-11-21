@@ -47,6 +47,33 @@ Comece pelo [roteiro de evolução](02-evoluindo/README.md). Ele organiza as mel
 
 ---
 
+## Parte 3 — Agente para simular produção localmente
+
+O arquivo [`.claude/agents/ambiente-local-prod.md`](.claude/agents/ambiente-local-prod.md) é um **agente do Claude Code**. Ele usa este material para montar um cluster k3d local que se comporta como produção:
+
+- 3 nós com "zonas" simuladas, registry próprio, TLS e Ingress;
+- Prometheus, Grafana, Alertmanager e coletor OpenTelemetry;
+- manifestos novos em `deploy/local-prod/` (Kustomize), com todas as correções do capítulo 14 — sem mexer nos arquivos originais;
+- uma bateria de testes de comportamento: rollout e rollback, readiness com o banco fora, PDB, NetworkPolicy, HPA, alertas, backup.
+
+**Como usar:**
+
+```bash
+# 1. Copie o agente para o repositório do app-api (ou para ~/.claude/agents/ para usar em qualquer projeto)
+mkdir -p ../app-api/.claude/agents
+cp .claude/agents/ambiente-local-prod.md ../app-api/.claude/agents/
+
+# 2. Abra o Claude Code no app-api e peça:
+cd ../app-api && claude
+> use o agente ambiente-local-prod para subir o ambiente
+```
+
+Outros pedidos que ele entende: "valide o ambiente local", "atualize o ambiente com a versão atual", "derrube o ambiente local".
+
+> Requisitos: Docker (4 CPUs / 6 GB livres recomendados), k3d, kubectl, helm e git. O agente verifica e pede confirmação antes de instalar qualquer coisa ou apagar dados.
+
+---
+
 ## Como testar os conceitos na prática
 
 O `app-api` roda num cluster local **k3d** (Kubernetes leve dentro do Docker). Para brincar:
