@@ -70,6 +70,29 @@ cd ../app-api && claude
 
 Outros pedidos que ele entende: "valide o ambiente local", "atualize o ambiente com a versão atual", "derrube o ambiente local".
 
+### Versão para Kiro
+
+O mesmo agente existe para o Kiro em [`.kiro/agents/ambiente-local-prod.md`](.kiro/agents/ambiente-local-prod.md) (formato Markdown do Kiro IDE 1.x / CLI 3.x). Além das instruções, ele traz **permissões** declaradas:
+
+| Ação | Efeito |
+|---|---|
+| Escrever em `deploy/local-prod/` | liberado |
+| Escrever em `k8s/`, `app/`, `Dockerfile`, `.github/` | bloqueado |
+| Comandos de leitura (`kubectl get/describe/logs`, `helm list`, `git status`...) | liberados |
+| Apagar cluster, recursos ou volumes (`k3d cluster delete`, `kubectl delete`, `kubectl drain`...) | pede aprovação |
+| `sudo`, `git push`, `git commit` | bloqueados |
+
+```bash
+mkdir -p ../app-api/.kiro/agents
+cp .kiro/agents/ambiente-local-prod.md ../app-api/.kiro/agents/
+
+# Kiro IDE: abra o app-api e escolha o agente "ambiente-local-prod" no seletor de agentes do chat
+# Kiro CLI:
+cd ../app-api && kiro-cli --agent ambiente-local-prod
+```
+
+> O Kiro só carrega agentes de projeto (`.kiro/agents/`) se o workspace for confiável. Para usar em qualquer projeto, copie para `~/.kiro/agents/`.
+
 > Requisitos: Docker (4 CPUs / 6 GB livres recomendados), k3d, kubectl, helm e git. O agente verifica e pede confirmação antes de instalar qualquer coisa ou apagar dados.
 
 ---
